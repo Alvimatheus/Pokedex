@@ -10,11 +10,15 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export default function index({}) {
+export default function index({PkmnEndPoint}) {
+
+  console.log("PkmnEndPoint DENTRO DO INDEX -- > ", PkmnEndPoint)
 
   return (
     <Wrapper>
-        <PokemonCard />
+        {PkmnEndPoint.map((pkmnNameUrl)=>{
+          return <PokemonCard pkmn={pkmnNameUrl}/>
+        })}
     </Wrapper>
   )
 }

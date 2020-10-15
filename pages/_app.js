@@ -20,34 +20,34 @@ const theme = {
   },
 }
 
-export default function App({ Component, pageProps, pokemonUrl}) {
-  const [PkmnURL, setPkmnURL] = useState([])
-  const [PkmnEndPoint, setPkmnEndPoint] = useState([])
+export default function App({ Component, pageProps}) {
+  //const [PkmnURL, setPkmnURL] = useState([])
+  const [PkmnEndPoint, setPkmnEndPoint] = useState([]) // aqui leva NAME: , URL:
 
   useEffect(() => {
       PokemonEndPoint()
         .then((resolve)=>{
         setPkmnEndPoint(resolve.data.results)
-  })
+      })
   }, [])
 
   {/* 
     useEffect(() => {
       PokemonEndPointURL(pokemonUrl.url)
-      .then((resolve)=>{
+        .then((resolve)=>{
         setPkmnURL(resolve)
-        console.log(resolve)
+        console.log(resolve.data)
       })
-    }, [])
-   */}
+  }, [])
+ */}
 
-   const changedProps = {...pageProps, PkmnURL:PkmnURL, PkmnEndPoint:PkmnEndPoint}
+   const changedProps = {...pageProps, PkmnEndPoint : PkmnEndPoint}
 
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <Component {...changedProps} />
       </ThemeProvider>
     </>
   )
