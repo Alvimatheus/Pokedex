@@ -22,18 +22,14 @@ export const Name = styled.div`
 `;
 
 export default function PokemonCard({pkmn}) {
-const [PkmnURL, setPkmnURL] = useState([])
+    const [PkmnURL, setPkmnURL] = useState([])
 
     useEffect(() => {
         PokemonEndPointURL(pkmn.url)
           .then((resolve)=>{
           setPkmnURL(resolve)
-          console.log(resolve.data)
         })
     }, [])
-
-    console.log("PKMNURL FORA DO USEEFFECT -->", PkmnURL)
-
 
     return (
         <Card>
