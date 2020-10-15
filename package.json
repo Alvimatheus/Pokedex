@@ -1,0 +1,36 @@
+{
+  "name": "reacthooks-styledcomponent-antdesign-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^9.5.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-is": "^16.8.0",
+    "styled-components": "^5.0.0",
+    "@ant-design/icons": "4.2.1",
+    "@next/bundle-analyzer": "^9.1.4",
+    "antd": "4.3.0",
+    "babel-plugin-import": "1.13.0",
+    "cross-env": "^7.0.2",
+    "dayjs": "1.8.28",
+    "esm": "^3.2.25",
+    "postcss-preset-env": "^6.7.0"
+  },
+  "browser": {
+    "fs": false,
+    "path": false
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "",
+  "license": "ISC"
+}
