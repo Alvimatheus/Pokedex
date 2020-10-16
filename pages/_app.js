@@ -5,13 +5,14 @@ import '../styles/vars.css'
 import '../styles/global.css'
 import PokemonEndPointURL from '../utils/EndPointURl'
 import PokemonEndPoint from '../utils/EndPoint'
+import AppHeader from '../components/AppHeader'
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: yellow;
+    background-color: #f1c40f;
   }
 `
 
@@ -37,6 +38,7 @@ export default function App({ Component, pageProps}) {
   return (
     <>
       <GlobalStyle />
+      <AppHeader />
       <ThemeProvider theme={theme}>
         <Component {...changedProps} />
       </ThemeProvider>
