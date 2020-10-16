@@ -20,18 +20,9 @@ const theme = {
   },
 }
 
-export default function App({ Component, pageProps, pkmn}) {
+export default function App({ Component, pageProps}) {
   const [PkmnEndPoint, setPkmnEndPoint] = useState([])
-  //const [PkmnURL, setPkmnURL] = useState([])
-{/* 
-  useEffect(() => {
-      PokemonEndPointURL(pkmn.url)
-        .then((resolve)=>{
-        setPkmnURL(resolve)
-        console.log(resolve.data)
-      })
-  }, [])
-*/}
+  const [PkmnSelected, setPkmnSelected] = useState()
 
   useEffect(() => {
       PokemonEndPoint()
@@ -40,7 +31,7 @@ export default function App({ Component, pageProps, pkmn}) {
       })
   }, [])
 
-   const changedProps = {...pageProps, PkmnEndPoint : PkmnEndPoint}
+   const changedProps = {...pageProps, PkmnEndPoint : PkmnEndPoint, PkmnSelected: PkmnSelected, setPkmnSelected}
 
   return (
     <>

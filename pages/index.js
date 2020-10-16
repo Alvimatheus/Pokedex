@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import PokemonEndPointURL from '../utils/EndPointURl'
+
 import styled from 'styled-components'
 import PokemonCard from '../components/PokemonCard'
+import PokemonDetails from './PokemonDetails'
+import { useRouter } from 'next/router'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -10,15 +12,23 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export default function index({PkmnEndPoint}) {
+export default function index({PkmnEndPoint, setPkmnSelected}) {
+const router = useRouter()
 
-  console.log("PkmnEndPoint DENTRO DO INDEX -- > ", PkmnEndPoint)
+  function PokemonSelected(pkmnNameUrl){
+    setPkmnSelected(pkmnNameUrl)
+    router.push('./PokemonDetails')
+  }
+
+  console.log("PkmnEndPoint DENTRO DO INDEX --->", PkmnEndPoint)
 
   return (
     <Wrapper>
-        {PkmnEndPoint.map((pkmnNameUrl)=>{
-          return <PokemonCard pkmn={pkmnNameUrl}/>
-        })}
+          {PkmnEndPoint.map((pkmnNameUrl)=>(
+            <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
+              <PokemonCard pkmn={pkmnNameUrl}/>
+            </div>
+          ))}
     </Wrapper>
   )
 }
