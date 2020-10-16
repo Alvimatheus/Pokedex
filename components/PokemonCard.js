@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Card = styled.div`
-    border: solid 2px gray;
+    border: solid 1px gray;
     flex-direction: column;
     cursor: pointer;
     img{

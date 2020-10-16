@@ -5,12 +5,18 @@ import '../styles/vars.css'
 import '../styles/global.css'
 import PokemonEndPointURL from '../utils/EndPointURl'
 import PokemonEndPoint from '../utils/EndPoint'
+import MainHeader from '../components/MainHeader'
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: yellow;
+    img{
+      width: 600px;
+      height: 200px;
+    }
   }
 `
 
@@ -36,9 +42,9 @@ export default function App({ Component, pageProps}) {
   return (
     <>
       <GlobalStyle />
+      <MainHeader />
       <ThemeProvider theme={theme}>
         <Component {...changedProps} />
       </ThemeProvider>
-    </>
   )
 }
