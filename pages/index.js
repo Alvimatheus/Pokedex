@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
 export default function index({PkmnEndPoint, setPkmnSelected}) {
 const router = useRouter()
 
+// guarda o pkmn selecionado
   function PokemonSelected(pkmnNameUrl){
     setPkmnSelected(pkmnNameUrl)
     router.push('./PokemonDetails')

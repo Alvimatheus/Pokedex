@@ -27,9 +27,11 @@ export const Name = styled.div`
 `;
 
 export default function PokemonCard({pkmn}) {
-    const [PkmnURL, setPkmnURL] = useState([])
+    const [PkmnURL, setPkmnURL] = useState([]) // guarda a URL de cada pkmn
     const [PokemonSelectedURL, setPokemonSelectedURL] = useState([])
 
+
+    // chama endpoint da URL
     useEffect(() => {
         PokemonEndPointURL(pkmn.url)
           .then((resolve)=>{
@@ -39,7 +41,6 @@ export default function PokemonCard({pkmn}) {
 
     console.log("PKMN URL DENTRO DO POKEMON CARD", PkmnURL)
 
-    // ESSA FUNÇÃO ESTÁ FUNCIONANDO!! PORÉM NÃO SEI COMO PASSAR ELA PRA DENTRO DO PokemonDetails.js 
     function PkmnSelectedURL(PkmnURL){
         setPokemonSelectedURL(PkmnURL)
         console.log("PKMNURL NA PkmnSelectedURL ---->", PkmnURL.abilities && PkmnURL.abilities.ability)

@@ -23,9 +23,11 @@ const theme = {
 }
 
 export default function App({ Component, pageProps}) {
-  const [PkmnEndPoint, setPkmnEndPoint] = useState([])
+  const [PkmnEndPoint, setPkmnEndPoint] = useState([]) // NAME, URL
   const [PkmnSelected, setPkmnSelected] = useState()
 
+
+  // chamando endpoint (NAME, URL)
   useEffect(() => {
       PokemonEndPoint()
         .then((resolve)=>{
