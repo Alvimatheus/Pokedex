@@ -20,8 +20,6 @@ const router = useRouter()
     router.push('./PokemonDetails')
   }
 
-  console.log("PkmnEndPoint DENTRO DO INDEX --->", PkmnEndPoint)
-
   return (
     <Wrapper>
           {PkmnEndPoint.map((pkmnNameUrl)=>(

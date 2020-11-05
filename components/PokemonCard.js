@@ -26,10 +26,8 @@ export const Name = styled.div`
     justify-content: center;
 `;
 
-export default function PokemonCard({pkmn}) {
+export default function PokemonCard({pkmn, FullData}) {
     const [PkmnURL, setPkmnURL] = useState([]) // guarda a URL de cada pkmn
-    const [PokemonSelectedURL, setPokemonSelectedURL] = useState([])
-
 
     // chama endpoint da URL
     useEffect(() => {
@@ -39,17 +37,10 @@ export default function PokemonCard({pkmn}) {
         })
     }, [])
 
-    console.log("PKMN URL DENTRO DO POKEMON CARD", PkmnURL)
-
-    function PkmnSelectedURL(PkmnURL){
-        setPokemonSelectedURL(PkmnURL)
-        console.log("PKMNURL NA PkmnSelectedURL ---->", PkmnURL.abilities && PkmnURL.abilities.ability)
-    }
-
     return (
         <Wrapper>
             <Card>
-                <div onClick={()=> PkmnSelectedURL(PkmnURL)}>
+                <div>
                     <img src={PkmnURL.sprites ? PkmnURL.sprites.front_default : "/pokebola.jpg"}></img>
                     <Name>{pkmn.name ? pkmn.name : "????"}</Name>
                 </div>

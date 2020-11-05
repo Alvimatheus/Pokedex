@@ -8,16 +8,24 @@ export const Wrapper = styled.div`
     justify-content: center;
 `;
 
-export default function PokemonDetails(PkmnSelected, PokemonSelectedURL) {
+export const Title = styled.h1`
+    color: gray;
+`;
+
+export const PokemonSelected = styled.h1`
+    color: red;
+`;
+
+export default function PokemonDetails(PkmnSelected, FullData) {
+
+    console.log("FullData dentro do PokemonDetails", FullData) // não está chegando .....
 
     return (
         <Wrapper>
-            Pokemon Selecionado: 
-            <div>
+            <Title>Pokemon Selecionado:</Title> 
+            <PokemonSelected>
                 {PkmnSelected.PkmnSelected ? PkmnSelected.PkmnSelected.name : "Pokemon não selecionado"}
-                {console.log("POKEMON SELECTED URL DENTRO DO QUEM SOMOS ---- >", PokemonSelectedURL)}
-            </div>
-
+            </PokemonSelected>
         </Wrapper>
     )
 }

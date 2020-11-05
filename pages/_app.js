@@ -25,17 +25,24 @@ const theme = {
 export default function App({ Component, pageProps}) {
   const [PkmnEndPoint, setPkmnEndPoint] = useState([]) // NAME, URL
   const [PkmnSelected, setPkmnSelected] = useState()
+  const [FullData, setFullData] = useState([])
 
+  let PokemonDataArray = [];
 
-  // chamando endpoint (NAME, URL)
   useEffect(() => {
       PokemonEndPoint()
         .then((resolve)=>{
         setPkmnEndPoint(resolve.data.results)
+        resolve.data.results.map((pokemon)=>{
+          PokemonEndPointURL(pokemon.url).then((success)=>{
+            PokemonDataArray.push({name: pokemon.name, data: success})
+          })
+        })
       })
+      setFullData(PokemonDataArray)
   }, [])
 
-   const changedProps = {...pageProps, PkmnEndPoint : PkmnEndPoint, PkmnSelected: PkmnSelected, setPkmnSelected}
+   const changedProps = {...pageProps, PkmnEndPoint : PkmnEndPoint, PkmnSelected: PkmnSelected, setPkmnSelected, FullData: FullData,}
 
   return (
     <>
