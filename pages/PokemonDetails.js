@@ -18,8 +18,6 @@ export const PokemonSelected = styled.h1`
 
 export default function PokemonDetails(PkmnSelected, FullData) {
 
-    console.log("FullData dentro do PokemonDetails", FullData) // não está chegando .....
-
     return (
         <Wrapper>
             <Title>Pokemon Selecionado:</Title> 

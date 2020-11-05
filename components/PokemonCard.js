@@ -26,7 +26,7 @@ export const Name = styled.div`
     justify-content: center;
 `;
 
-export default function PokemonCard({pkmn, FullData}) {
+export default function PokemonCard({pkmn}) {
     const [PkmnURL, setPkmnURL] = useState([]) // guarda a URL de cada pkmn
 
     // chama endpoint da URL
