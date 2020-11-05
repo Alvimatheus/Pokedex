@@ -42,6 +42,8 @@ export default function App({ Component, pageProps}) {
       setFullData(PokemonDataArray)
   }, [])
 
+  // console.log("FullData dentro do APP.JS", FullData) TA CHEGANDO!
+
    const changedProps = {...pageProps, PkmnEndPoint : PkmnEndPoint, PkmnSelected: PkmnSelected, setPkmnSelected, FullData: FullData,}
 
   return (

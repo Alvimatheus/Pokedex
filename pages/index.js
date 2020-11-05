@@ -11,8 +11,10 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export default function index({PkmnEndPoint, setPkmnSelected}) {
+export default function index({PkmnEndPoint, setPkmnSelected, FullData}) {
 const router = useRouter()
+
+console.log("POKEMON FULLDATA DENTRO DO INDEX", FullData) // ESTÁ CHEGANDO!
 
 // guarda o pkmn selecionado
   function PokemonSelected(pkmnNameUrl){
@@ -22,7 +24,7 @@ const router = useRouter()
 
   return (
     <Wrapper>
-          {PkmnEndPoint.map((pkmnNameUrl)=>(
+          {FullData.map((pkmnNameUrl)=>( // troquei o PkmnEndPoint pelo FullData e ta dando pau
             <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
               <PokemonCard pkmn={pkmnNameUrl}/>
             </div>
