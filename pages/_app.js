@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import 'antd/dist/antd.css'
 import '../styles/vars.css'
 import '../styles/global.css'
-import PokemonEndPointURL from '../utils/EndPointURl'
-import PokemonEndPoint from '../utils/EndPoint'
 import AppHeader from '../components/AppHeader'
 
 const GlobalStyle = createGlobalStyle`
@@ -23,28 +21,9 @@ const theme = {
 }
 
 export default function App({ Component, pageProps}) {
-  const [PkmnEndPoint, setPkmnEndPoint] = useState([]) // NAME, URL
   const [PkmnSelected, setPkmnSelected] = useState()
-  const [FullData, setFullData] = useState([])
 
-  let PokemonDataArray = [];
-
-  useEffect(() => {
-      PokemonEndPoint()
-        .then((resolve)=>{
-        setPkmnEndPoint(resolve.data.results)
-        resolve.data.results.map((pokemon)=>{
-          PokemonEndPointURL(pokemon.url).then((success)=>{
-            PokemonDataArray.push({name: pokemon.name, data: success})
-          })
-        })
-      })
-      setFullData(PokemonDataArray)
-  }, [])
-
-  // console.log("FullData dentro do APP.JS", FullData) TA CHEGANDO!
-
-   const changedProps = {...pageProps, PkmnEndPoint : PkmnEndPoint, PkmnSelected: PkmnSelected, setPkmnSelected, FullData: FullData,}
+   const changedProps = {...pageProps, PkmnSelected: PkmnSelected, setPkmnSelected}
 
   return (
     <>

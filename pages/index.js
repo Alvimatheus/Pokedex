@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import PokemonCard from '../components/PokemonCard'
-import PokemonDetails from './PokemonDetails'
 import { useRouter } from 'next/router'
+import PokemonEndPoint from '../utils/EndPoint'
+import PokemonEndPointURL from '../utils/EndPointURL'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -11,10 +12,33 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export default function index({PkmnEndPoint, setPkmnSelected, FullData}) {
-const router = useRouter()
+export default function index({ setPkmnSelected }) {
+  const [FullData, setFullData] = useState([])
+  const [PkmnEndPoint, setPkmnEndPoint] = useState([]) // NAME, URL
+  const router = useRouter()
 
-console.log("POKEMON FULLDATA DENTRO DO INDEX", FullData) // ESTÁ CHEGANDO!
+
+
+
+let PokemonDataArray = [];
+
+useEffect(() => {
+    PokemonEndPoint()
+      .then((resolve)=>{
+      setPkmnEndPoint(resolve.data.results)
+      resolve.data.results.map((pokemon)=>{
+        PokemonEndPointURL(pokemon.url).then((success)=>{
+          PokemonDataArray.push({name: pokemon.name, data: success})
+        })
+      })
+    })
+    setFullData(PokemonDataArray)
+}, [])
+
+
+
+
+
 
 // guarda o pkmn selecionado
   function PokemonSelected(pkmnNameUrl){
@@ -22,9 +46,14 @@ console.log("POKEMON FULLDATA DENTRO DO INDEX", FullData) // ESTÁ CHEGANDO!
     router.push('./PokemonDetails')
   }
 
+
+
+
+  console.log("POKEMON FULLDATA DENTRO DO INDEX", FullData) // ESTÁ CHEGANDO!
+
   return (
     <Wrapper>
-          {FullData.map((pkmnNameUrl)=>( // troquei o PkmnEndPoint pelo FullData e ta dando pau
+          {PokemonEndPoint.map((pkmnNameUrl)=>( // FullData
             <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
               <PokemonCard pkmn={pkmnNameUrl}/>
             </div>
