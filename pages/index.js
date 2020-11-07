@@ -16,6 +16,8 @@ export default function index({ setPkmnSelected }) {
   const [PkmnEndPoint, setPkmnEndPoint] = useState([]) // NAME, URL
   const router = useRouter()
 
+
+
   
 // ENTENDER MELHOR OQ ACONTECE AQUI DENTRO
 useEffect(() => {
@@ -33,8 +35,6 @@ useEffect(() => {
 }, [])
 // ENTENDER MELHOR OQ ACONTECE AQUI DENTRO
 
-console.log("FULLDATA", FullData)
-
 
 
 
@@ -44,26 +44,14 @@ console.log("FULLDATA", FullData)
     setPkmnSelected(pkmnNameUrl)
     router.push('./PokemonDetails')
   }
-<<<<<<< Updated upstream
 
-
-
-
-  console.log("POKEMON FULLDATA DENTRO DO INDEX", FullData) // ESTÁ CHEGANDO!
-
-  return (
-    <Wrapper>
-          {PokemonEndPoint.map((pkmnNameUrl)=>( // FullData
-            <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
-=======
   return (
     <Wrapper>
           {FullData.length > 0 && FullData.map((pkmnNameUrl)=>{ // FullData e PkmnEndPoint
             return <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
->>>>>>> Stashed changes
               <PokemonCard pkmn={pkmnNameUrl}/>
             </div>
-          ))}
+          })}
     </Wrapper>
   )
 }
