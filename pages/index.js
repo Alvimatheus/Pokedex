@@ -11,30 +11,29 @@ export const Wrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
 `;
-
 export default function index({ setPkmnSelected }) {
-  const [FullData, setFullData] = useState([])
+  const [FullData, setFullData] = useState([]) // ARRAY DE OBJETOS {name: NomeDoPokemon, data:{...}} 
   const [PkmnEndPoint, setPkmnEndPoint] = useState([]) // NAME, URL
   const router = useRouter()
 
-
-
-
-let PokemonDataArray = [];
-
+  
+// ENTENDER MELHOR OQ ACONTECE AQUI DENTRO
 useEffect(() => {
-    PokemonEndPoint()
-      .then((resolve)=>{
+    PokemonEndPoint().then((resolve)=>{
       setPkmnEndPoint(resolve.data.results)
-      resolve.data.results.map((pokemon)=>{
-        PokemonEndPointURL(pokemon.url).then((success)=>{
-          PokemonDataArray.push({name: pokemon.name, data: success})
+      const Promisses = resolve.data.results.map((pokemon)=>{
+        return PokemonEndPointURL(pokemon.url).then((success)=>{
+          return {name: pokemon.name, data: success}
         })
       })
-    })
-    setFullData(PokemonDataArray)
+        Promise.all(Promisses).then((allReturns)=>{
+          setFullData(allReturns)
+        })
+      })
 }, [])
+// ENTENDER MELHOR OQ ACONTECE AQUI DENTRO
 
+console.log("FULLDATA", FullData)
 
 
 
@@ -45,6 +44,7 @@ useEffect(() => {
     setPkmnSelected(pkmnNameUrl)
     router.push('./PokemonDetails')
   }
+<<<<<<< Updated upstream
 
 
 
@@ -55,6 +55,12 @@ useEffect(() => {
     <Wrapper>
           {PokemonEndPoint.map((pkmnNameUrl)=>( // FullData
             <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
+=======
+  return (
+    <Wrapper>
+          {FullData.length > 0 && FullData.map((pkmnNameUrl)=>{ // FullData e PkmnEndPoint
+            return <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
+>>>>>>> Stashed changes
               <PokemonCard pkmn={pkmnNameUrl}/>
             </div>
           ))}

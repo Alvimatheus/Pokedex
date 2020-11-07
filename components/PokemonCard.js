@@ -1,14 +1,10 @@
-import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
-import PokemonEndPointURL from '../utils/EndPointURl'
-import { useRouter } from 'next/router'
 
 export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
 `;
-
 export const Card = styled.div`
     border: solid 1px gray;
     flex-direction: column;
@@ -19,29 +15,18 @@ export const Card = styled.div`
         margin: 20px;
     }
 `;
-
 export const Name = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
-export default function PokemonCard({pkmn}) {
-    const [PkmnURL, setPkmnURL] = useState([]) // guarda a URL de cada pkmn
-
-    // chama endpoint da URL
-    useEffect(() => {
-        PokemonEndPointURL(pkmn.url)
-          .then((resolve)=>{
-          setPkmnURL(resolve)
-        })
-    }, [])
-
+export default function PokemonCard({pkmn}) { // pkmn está passando como props todos os dados do pkmnNameUrl (index.js)
     return (
         <Wrapper>
             <Card>
                 <div>
-                    <img src={PkmnURL.sprites ? PkmnURL.sprites.front_default : "/pokebola.jpg"}></img>
+                    <img src={pkmn.data.sprites ? pkmn.data.sprites.front_default : "/pokebola.jpg"}></img>
                     <Name>{pkmn.name ? pkmn.name : "????"}</Name>
                 </div>
             </Card>
