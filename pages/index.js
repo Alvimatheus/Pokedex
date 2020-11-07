@@ -16,10 +16,6 @@ export default function index({ setPkmnSelected }) {
   const [PkmnEndPoint, setPkmnEndPoint] = useState([]) // NAME, URL
   const router = useRouter()
 
-
-
-  
-// ENTENDER MELHOR OQ ACONTECE AQUI DENTRO
 useEffect(() => {
     PokemonEndPoint().then((resolve)=>{
       setPkmnEndPoint(resolve.data.results)
@@ -33,11 +29,6 @@ useEffect(() => {
         })
       })
 }, [])
-// ENTENDER MELHOR OQ ACONTECE AQUI DENTRO
-
-
-
-
 
 // guarda o pkmn selecionado
   function PokemonSelected(pkmnNameUrl){

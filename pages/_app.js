@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     background-color: #f1c40f;
+    font-family: 'Ubuntu', sans-serif;
   }
 `
 
