@@ -4,12 +4,23 @@ import PokemonCard from '../components/PokemonCard'
 import { useRouter } from 'next/router'
 import PokemonEndPoint from '../utils/EndPoint'
 import PokemonEndPointURL from '../utils/EndPointURL'
+import { Cascader } from 'antd';
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+`;
+export const Holder = styled.div`
+
+`;
+export const SelectedHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 `;
 export default function index({ setPkmnSelected }) {
   const [FullData, setFullData] = useState([]) // ARRAY DE OBJETOS {name: NomeDoPokemon, data:{...}} 
@@ -36,13 +47,31 @@ useEffect(() => {
     router.push('./PokemonDetails')
   }
 
+  const options = [
+    {
+      value: 'zhejiang',
+      label: 'Zhejiang',
+    },
+  ];
+  
+  function onChange(value) {
+    console.log(value);
+  }
+ 
   return (
-    <Wrapper>
-          {FullData.length > 0 && FullData.map((pkmnNameUrl)=>{ // FullData e PkmnEndPoint
-            return <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
-              <PokemonCard pkmn={pkmnNameUrl}/>
-            </div>
-          })}
-    </Wrapper>
+    <Holder>
+          <SelectedHeader>
+            <Cascader options={options} onChange={onChange} placeholder="Please Choose a Pokemon" />
+          </SelectedHeader>
+
+          <Wrapper>
+              {FullData.length > 0 && FullData.map((pkmnNameUrl)=>{ // FullData e PkmnEndPoint
+                return <div onClick={()=> PokemonSelected(pkmnNameUrl)}>
+                  <PokemonCard pkmn={pkmnNameUrl}/>
+                  </div>
+                })}
+          </Wrapper> 
+
+    </Holder>
   )
 }
