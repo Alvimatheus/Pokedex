@@ -71,27 +71,16 @@ export default function PokemonDetails(PkmnSelected) {
                             }): "Missing Pokemon Abilities"}
                         </Divider>
 
-
-
-
-
                         <Divider>
                             <PkmnName>Pokemon Types</PkmnName>
                             {PkmnSelected.PkmnSelected ? PkmnSelected.PkmnSelected.data.types.map((tipos)=>{
                                 console.log("PKMN SELECTED DENTRO DO TYPE",PkmnSelected)
                                 return (
                                 <div>
-                                    {tipos.name && tipos.name}   {/* ARRUMAR ESTÁ CARALHAAAA */}
+                                    {tipos.type && tipos.type.name}  
                                 </div>)
                             }): "Missing Pokemon Types"}
                         </Divider>
-
-
-
-
-
-
-
 
                     </HolderInformation>            
                 </PokemonInformation>          
